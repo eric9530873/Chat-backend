@@ -10,7 +10,8 @@ const { apiErrorHandler } = require('../middleware/error-handler')
 
 router.get('/getforms', formController.getForms)
 
-router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin' }), userController.signIn)
+// router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin' }), userController.signIn)
+router.post('/signup',userController.signUp)
 
 router.use('/', apiErrorHandler)
 
