@@ -10,7 +10,12 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      resume.belongsTo(models.User, { foreignKey: 'userId' })
+      resume.belongsToMany(models.company, {
+        through: models.record,
+        foreignKey: 'resumeId',
+        as: 'Jobsearchrecord'
+      })
     }
   }
   resume.init({
@@ -19,11 +24,14 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     email: DataTypes.STRING,
     education: DataTypes.STRING,
-    duringwork: DataTypes.STRING
+    image: DataTypes.STRING,
+    resumeName: DataTypes.STRING,
+    userId: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'resume',
-    underscored: true,
+    tableName: 'resumes',
+    underscored: true
   });
   return resume;
 };

@@ -24,9 +24,6 @@ module.exports = {
       education: {
         type: Sequelize.STRING
       },
-      duringwork: {
-        type: Sequelize.STRING
-      },
       created_at: {
         allowNull: false,
         type: Sequelize.DATE
