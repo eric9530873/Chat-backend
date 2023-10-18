@@ -6,9 +6,7 @@ const resumeController = {
     getResumes: (req, res, next) => {
         Promise.all([
             resume.findAndCountAll({
-                include: [User, { model: company, as: 'Jobsearchrecord' }],
-                nest: true,
-                raw: true
+                include: [User, { model: company, as: 'Jobsearchrecord' }]
             })
         ])
 

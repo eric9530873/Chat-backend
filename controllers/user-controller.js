@@ -50,6 +50,23 @@ const userController = {
             })
             .then(user => res.json({ status: 'success', user }))
             .catch(err => next(err))
+    },
+    getUsers: (req, res, next) => {
+        User.findAll({
+            raw: true
+        })
+            .then(user => res.json({ status: 'success', user }))
+            .catch(err => next(err))
+    },
+    getCurrentUser: (req, res) => {
+        return res.json({
+            id: req.user.id,
+            name: req.user.name,
+            email: req.user.email,
+            image: req.user.image,
+            isCandidate: req.user.isCandidate,
+            isCompany: req.user.isCompany
+        })
     }
 }
 module.exports = userController
